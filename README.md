@@ -1,7 +1,7 @@
 ## Design Pattern
 
-#### 행위 (Behavioral)
+#### Behavioral
 1. [Iterator](https://github.com/yeong-chae/study-design-pattern/tree/master/src/com/yckim/designpattern/behavioral/iterator)
----
-#### 구조 (Structural)
+
+#### Structural
 1. [Facade](https://github.com/yeong-chae/study-design-pattern/tree/master/src/com/yckim/designpattern/structural/facade)
