@@ -11,7 +11,9 @@ interface Node {
   val name: String
   val path: String
   val size: Int
-}
+
+  fun delete()
+} 
 
 class Directory(
   override val path: String,
@@ -33,6 +35,12 @@ class Directory(
   fun add(node: Node) {
     children.add(node)
   }
+  
+  override fun delete() {
+    children.foreach {
+      it.delete()
+    }
+  }
 
   var children: MutableList<Node> = mutableListOf()
 }
@@ -42,6 +50,10 @@ class File(
   override val name: String
 ) : Node {
   override val size: Int = java.io.File(path).getSize()
+
+  override fun delete() {
+    java.io.File(path).delete()
+  }
 }
 
 val rootDirectory = new Directory("~/Documents", "Documents")
@@ -51,4 +63,4 @@ childDirectory.createFile("childFile1")
 
 ```
 
-rootDirectory의 size를 가져올 때 Directory냐, File이냐의 구분없이 size의 합을 가져올 수 있게 된다
+rootDirectory의 size를 가져올 때 Directory냐, File이냐의 구분없이 size의 합을 가져올 수 있고 
